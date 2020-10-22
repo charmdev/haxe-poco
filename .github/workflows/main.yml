@@ -13,7 +13,7 @@ jobs:
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.0.5
-      - run:
+      - run: |
           haxe -version
           cd sample
           haxe build.hxml
