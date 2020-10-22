@@ -27,13 +27,11 @@ class Handler {
 
   public function update():Bool
   {
-    trace("update");
     var needClose = false;
     try {
       var input = socket.input;
       var output = socket.output;
       var length:Int = input.readInt32();
-      trace('Message length: $length');
       if (length > 0) {
         var s:String = input.readString(length);
         var request:RequestMessage = haxe.Json.parse(s);
@@ -45,7 +43,6 @@ class Handler {
         output.writeString(serialized);
       }
     } catch (e:Dynamic) {
-      trace(e);
       needClose = true;
       if (needClose) trace('closing because of: $e');
     }
