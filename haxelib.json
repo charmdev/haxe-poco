@@ -1,0 +1,13 @@
+{
+	"name": "haxe-poco",
+	"url": "https://github.com/charmdev/haxe-poco",
+	"license": "Apache",
+	"tags": ["poco", "AirTest", "autotest"],
+	"description": "helps integrate Airtest poco sdk into haxe project for cpp target",
+	"version": "1.0.0",
+	"dependencies": {
+		"hxcpp": ""
+	},
+	"contributors": ["nulld"],
+	"releasenote": ""
+}
