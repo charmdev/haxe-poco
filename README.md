@@ -1,4 +1,5 @@
 # haxe-poco
+![CI](https://github.com/charmdev/haxe-poco/workflows/CI/badge.svg)
 helps integrate Airtest poco sdk into haxe cpp project.
 # What is Poco and AirTest?
 Great framework for Automate UI testing.
