@@ -11,49 +11,40 @@ https://poco.readthedocs.io/en/latest/source/doc/integration.html
 ```
 import poco.Protocol;
 
-class YourRpc implements poco.PocoServer.IRpc
-{
+class YourRpc implements poco.PocoServer.IRpc {
     var dumper:YourDumper;
 
-    public function new() 
-    {
+    public function new() {
         dumper = new YourDumper();
     }
 
-    public function dump():DumpResponse
-    {
+    public function dump():DumpResponse {
         return dumper.dumpHierarchy();
     }
 }
 
-class YourDumper implements poco.sdk.AbstractDumper
-{
+class YourDumper implements poco.sdk.AbstractDumper {
     var root:GameRoot;
 
-    public function new()
-    {
+    public function new() {
         root = new GameRoot();
     }
 
-    public function dumpHierarchy():SerializedNode
-    {
+    public function dumpHierarchy():SerializedNode {
         return dumpHierarchyImpl(root);
     }
 
-    private function dumpHierarchyImpl(node:poco.sdk.AbstractNode, onlyVisibleNode:Bool=true):SerializedNode
-    {
+    private function dumpHierarchyImpl(node:poco.sdk.AbstractNode, onlyVisibleNode:Bool=true):SerializedNode {
         var payload:Payload = node.enumerateAttrs();
         var nodeChildren = node.getChildren();
 
-        var result:SerializedNode = 
-        {
+        var result:SerializedNode = {
             name:payload.name,
             payload:payload
         };
 
         var children = [];
-        for (child in nodeChildren)
-        {
+        for (child in nodeChildren) {
             var childNode:SerializedNode = dumpHierarchyImpl(child, onlyVisibleNode);
             if (!onlyVisibleNode || childNode.payload.visible)
                 children.push(childNode);
@@ -69,6 +60,6 @@ class YourDumper implements poco.sdk.AbstractDumper
 
 2. initialize PocoServer with your rpc and start it:
 ```
-var poco = new PocoServer(rpc, port:Int=15004);
+var poco = new PocoServer(rpc, 15004);
 ```
 3. Start your project and connect it with AirtestIDE
