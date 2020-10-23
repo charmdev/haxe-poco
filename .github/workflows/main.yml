@@ -15,6 +15,7 @@ jobs:
         with:
           haxe-version: 4.0.5
       - run: |
+          echo ${ GITHUB_REF }
           haxe -version
           haxelib install hxcpp
           cd ./sample
