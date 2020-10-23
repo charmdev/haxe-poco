@@ -29,4 +29,4 @@ jobs:
           - zip -r ${{ PACKAGE_NAME }}.zip ${{ PACKAGE_NAME }}
           - unzip -l ${{ PACKAGE_NAME }}.zip
 
-          echo "TODO: publish to haxelib here"
+          - echo "TODO: publish to haxelib here"
