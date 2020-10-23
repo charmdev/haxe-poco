@@ -1,4 +1,4 @@
 -cp ./
--cp ../
+-cp ../src
 --main Main
 -cpp bin

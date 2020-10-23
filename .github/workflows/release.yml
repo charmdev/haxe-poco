@@ -10,9 +10,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.0.5
       - name: Publish
-        run: |
+        env:
+          PACKAGE_NAME: ${{ haxe-poco }}
+        run:
+          - echo ${{ GITHUB_REF }}
+          - mkdir ${{ PACKAGE_NAME }}
+
+          - cp -r src ${{ PACKAGE_NAME }}
+          - cp README.md ${{ PACKAGE_NAME }}
+          - cp LICENCE ${{ PACKAGE_NAME }}
+          - cp haxelib.json ${{ PACKAGE_NAME }}
+
+          - zip -r ${{ PACKAGE_NAME }}.zip ${{ PACKAGE_NAME }}
+          - unzip -l ${{ PACKAGE_NAME }}.zip
+
           echo "TODO: publish to haxelib here"
