@@ -7,7 +7,7 @@ on:
     types: [published]
 
 jobs:
-  build:
+  publish-on-haxelib:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
 
           cp -r src $PACKAGE_NAME
           cp README.md $PACKAGE_NAME
-          cp LICENCE $PACKAGE_NAME
+          cp LICENSE $PACKAGE_NAME
           cp haxelib.json $PACKAGE_NAME
 
           zip -r ${PACKAGE_NAME}.zip $PACKAGE_NAME
