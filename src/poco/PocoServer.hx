@@ -19,14 +19,12 @@ class Handler {
   var socket:Socket;
   var rpc:IRpc;
 
-  public function new(socket:Socket, rpc:IRpc)
-  {
+  public function new(socket:Socket, rpc:IRpc) {
     this.socket = socket;
     this.rpc = rpc;
   }
 
-  public function update():Bool
-  {
+  public function update():Bool {
     var needClose = false;
     try {
       var input = socket.input;
@@ -49,8 +47,7 @@ class Handler {
     return needClose;
   }
 
-  private function handleRequest(request:RequestMessage):ResponseMessage
-  {
+  private function handleRequest(request:RequestMessage):ResponseMessage {
     var response:ResponseMessage = {
       id:request.id,
       jsonrpc:request.jsonrpc,
@@ -82,7 +79,7 @@ class Handler {
 
     while (true) {
 #if nme
-      var s:String = "alocate dummy string to prevent dead lock";
+      var s:String = "alocate dummy string to prevent dead lock in hxcpp gc";
 #end
       if (done) break;
     }
