@@ -14,7 +14,7 @@ jobs:
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.0.5
-      - name: Publish
+      - name: Prepare haxelib package
         env:
           PACKAGE_NAME: haxe-poco
         run: |
@@ -26,6 +26,7 @@ jobs:
           cp LICENSE $PACKAGE_NAME
           cp haxelib.json $PACKAGE_NAME
 
+      - name: Archive
         uses: actions/upload-artifact@v2
         with:
           name: $PACKAGE_NAME
