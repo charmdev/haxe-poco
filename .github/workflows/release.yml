@@ -4,11 +4,12 @@ name: Publish
 
 on:
   release:
-    types: [published]
+    types: [created]
 
 jobs:
   publish-on-haxelib:
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v2
       - uses: krdlab/setup-haxe@v1
@@ -16,7 +17,8 @@ jobs:
           haxe-version: 4.0.5
       - name: Prepare haxelib package
         env:
-          PACKAGE_NAME: haxe-poco
+        PACKAGE_NAME: haxe-poco
+        
         run: |
           echo $GITHUB_REF
           mkdir $PACKAGE_NAME
@@ -26,9 +28,10 @@ jobs:
           cp LICENSE $PACKAGE_NAME
           cp haxelib.json $PACKAGE_NAME
 
-      - name: Archive
-        uses: actions/upload-artifact@v2
+      - name: Create GitHub release
+        uses: Roang-zero1/github-upload-release-artifacts-action@master
         with:
-          name: $PACKAGE_NAME
-          path: |
-            $PACKAGE_NAME
+          args:
+            - haxe-poco
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
