@@ -17,7 +17,7 @@ jobs:
           haxe-version: 4.0.5
       - name: Prepare haxelib package
         env:
-        PACKAGE_NAME: haxe-poco
+          PACKAGE_NAME: haxe-poco
         
         run: |
           echo $GITHUB_REF
