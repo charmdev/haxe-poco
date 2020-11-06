@@ -32,6 +32,6 @@ jobs:
         uses: Roang-zero1/github-upload-release-artifacts-action@master
         with:
           args:
-            - haxe-poco
+          - haxe-poco
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
