@@ -26,7 +26,8 @@ jobs:
           cp LICENSE $PACKAGE_NAME
           cp haxelib.json $PACKAGE_NAME
 
-          zip -r ${PACKAGE_NAME}.zip $PACKAGE_NAME
-          unzip -l ${PACKAGE_NAME}.zip
-
-          echo "TODO: publish to haxelib here"
+        uses: actions/upload-artifact@v2
+        with:
+          name: $PACKAGE_NAME
+          path: |
+            $PACKAGE_NAME

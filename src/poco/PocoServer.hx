@@ -78,9 +78,8 @@ class Handler {
     }, 0);
 
     while (true) {
-#if nme
-      var s:String = "alocate dummy string to prevent dead lock in hxcpp gc";
-#end
+      cpp.vm.Gc.enterGCFreeZone();
+      cpp.vm.Gc.exitGCFreeZone();
       if (done) break;
     }
     return result;
