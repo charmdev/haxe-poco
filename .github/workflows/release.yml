@@ -28,10 +28,12 @@ jobs:
           cp LICENSE $PACKAGE_NAME
           cp haxelib.json $PACKAGE_NAME
 
+          zip -r haxelib-package.zip $PACKAGE_NAME
+
       - name: Create GitHub release
         uses: Roang-zero1/github-upload-release-artifacts-action@master
         with:
           args: |
-            haxe-poco
+            haxelib-package.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
