@@ -4,7 +4,8 @@
 	"license": "Apache",
 	"tags": ["poco", "AirTest", "autotest"],
 	"description": "helps integrate Airtest poco sdk into haxe project for cpp target",
-	"version": "1.0.0",
+	"version": "1.0.2",
+	"classPath": "src/",
 	"dependencies": {
 		"hxcpp": ""
 	},
